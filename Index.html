@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy 22nd Birthday 💚💜</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="hearts"></div><div id="confetti"></div>
+
+<!-- SECRET LOCK-->
+<div id="lock">
+  <div class="card" id="lockcard">
+    <div class="bigheart" style="font-size:56px">🔐</div>
+    <h2 style="color:var(--lav);margin:0">Enter our secret code</h2>
+    <div id="ldots"><i></i><i></i><i></i><i></i></div>
+    <p id="lmsg" style="margin:0 0 6px;min-height:1.4em;font-weight:700"></p>
+    <div class="keys" id="keys"></div>
+  </div>
+</div>
+
+
+<main>
+
+<!-- 1. HOME -->
+<section class="page active" id="home">
+  <div class="bigheart">💚💜</div>
+  <h1 id="title"></h1>
+
+  <div class="card">
+    <p id="msg" style="font-size:1.1rem;line-height:1.6;margin:0"></p>
+  </div>
+
+  <div>
+    <button class="btn" onclick="nextPage()">Start Panlama???</button>
+  </div>
+</section>
+
+<!-- 2. PARTY -->
+<section class="page" id="party">
+  <h2 style="color:var(--lav);margin:0">Surpriseeeeeeee🥳🎉</h2>
+
+  <div class="scene1" id="scene1">
+    <div class="cake" id="cake">
+      <div class="plate"></div><div class="t1"></div><div class="t2">22</div>
+      <div class="candle" style="left:78px"><i class="flame"></i></div>
+      <div class="candle" style="left:106px"><i class="flame"></i></div>
+      <div class="candle" style="left:134px"><i class="flame"></i></div>
+      <i class="puff"></i><i class="puff b"></i><i class="puff c"></i>
+      <div class="cutline"></div><span class="knife">🔪</span><span class="slice">🍰</span>
+    </div>
+  </div>
+
+  <div class="scene2" id="scene2" style="display:none">
+    <div class="bear" id="b1">
+      <i class="ear l"></i><i class="ear r"></i>
+      <div class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i class="mouth"></i><i class="cheek l"></i><i class="cheek r"></i></div>
+      <div class="body"></div><span class="nm" id="n1"></span>
+    </div>
+    <div class="bear" id="b2">
+      <i class="ear l"></i><i class="ear r"></i>
+      <div class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i class="mouth"></i><i class="cheek l"></i><i class="cheek r"></i></div>
+      <div class="body"></div><span class="nm" id="n2"></span>
+    </div>
+    <span class="food" id="food">🍰</span>
+  </div>
+
+  <p class="pmsg" id="pmsg"></p>
+  <div><button class="btn" id="pbtn" onclick="pAct()"></button>
+  <button class="btn alt" id="prst" onclick="pReset()" style="display:none">Restart 🔁</button></div>
+</section>
+
+
+<!-- 4. MEMORIES -->
+<section class="page" id="memories">
+  <h2 style="color:var(--lav);margin:0">Our Memories 📸</h2>
+  <p style="margin:4px 0 0;opacity:.75">Tap or swipe each photo 💌</p>
+  <div class="stack" id="stack"></div>
+  <p id="mcount" style="font-weight:700;margin:24px 0 0"></p>
+</section>
+
+
+
+<!-- 4c. REASONS -->
+<section class="page" id="reasons">
+  <h2 id="rtitle" style="color:var(--lav);margin:0"></h2>
+  <p style="margin:4px 0 0;opacity:.75">Tap a heart to open it</p>
+  <div class="card" id="rtext" style="margin-top:12px">Pick any number 💚</div>
+  <p id="rcount" style="font-weight:700;margin:0"></p>
+  <div class="rgrid" id="rgrid"></div>
+</section>
+
+<!-- 4d. GAME -->
+<section class="page" id="game">
+  <h2 style="color:var(--lav);margin:0">Catch my hearts 💘</h2>
+  <p id="ghint" style="margin:4px 0 0;opacity:.75"></p>
+  <p id="gscore" style="font-weight:700;margin:6px 0 0"></p>
+  <div id="garea"><div id="gwin" class="card" style="display:none;margin:24px 14px"><div class="bigheart" style="font-size:56px">💌</div><p id="gwintext" style="font-size:1.1rem;line-height:1.6;margin:6px 0 0"></p></div></div>
+  <div><button class="btn" id="gbtn" onclick="gStart()">Start 🎮</button></div>
+</section>
+
+<!-- 4e. SCRATCH -->
+<section class="page" id="scratch">
+  <h2 style="color:var(--lav);margin:0">A little gift 🎁</h2>
+  <div class="card"><p style="margin:0 0 12px;font-weight:700">Scratch the card with your finger 👆</p>
+    <div id="scbox"><div id="scprize"></div><canvas id="sc"></canvas></div></div>
+</section>
+
+<!-- 5. QUESTION -->
+<section class="page" id="ask">
+  <div class="bigheart">🥺</div>
+  <div class="card">
+    <h3 id="askq" style="color:var(--lav)"></h3>
+    <div class="noarea" id="noarea">
+      <button class="btn" id="yes" style="position:absolute;left:8%;top:40px" onclick="yesClick()">Yes 💚</button>
+      <button class="btn alt" id="no" style="left:55%;top:40px" onclick="noClick()">No 💔</button>
+    </div>
+    <p id="askres" style="font-weight:700;min-height:1.4em;margin:0"></p>
+  </div>
+</section>
+
+<!-- 5b. OPEN WHEN -->
+<section class="page" id="openwhen">
+  <h2 style="color:var(--lav);margin:0">Open when... 💌</h2>
+  <p style="margin:4px 0 8px;opacity:.75">Pick the one you need right now</p>
+  <div id="owlist"></div>
+</section>
+
+<!-- 6. LETTER -->
+<section class="page" id="letterpage">
+  <h2 style="color:var(--lav);margin:0">A letter for you 💌</h2>
+  <div><div class="env" id="env" onclick="openLetter()">💌</div>
+  <p id="taphint" style="margin:4px 0 0;opacity:.7">Tap the envelope</p></div>
+  <div class="letter card" id="letter"></div>
+</section>
+
+<!-- 7. REPLY -->
+<section class="page" id="reply">
+  <div class="bigheart" style="font-size:64px">💌</div>
+  <h2 style="color:var(--lav);margin:0">Reply to me 💌</h2>
+  <div class="card">
+    <p style="margin:0 0 10px;font-weight:700">Tell me how it felt 🥹</p>
+    <div id="chips"></div>
+    <textarea id="rtxt" rows="4" placeholder="Type your reply here..."></textarea>
+    <button class="btn" onclick="sendReply()">Send to me 💚</button>
+  </div>
+</section>
+</main>
+
+<button id="music" aria-label="Music on/off" onclick="toggleMusic()">🎵</button>
+
+<div class="toast" id="toast"></div>
+
+<nav>
+  <button id="back" onclick="prevPage()">‹ Back</button>
+  <div class="ndots" id="ndots"></div>
+  <button id="next" onclick="nextPage()">Next ›</button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
