@@ -328,18 +328,36 @@ document.addEventListener('pointerdown',e=>{ if(!e.target.closest('#music')) unl
 musicUI();
 
 // ---------- CONTINUOUS BACKGROUND MUSIC ----------
+// ---------- CONTINUOUS BACKGROUND MUSIC ----------
 
 let backgroundMusic = new Audio("audio/background.mp3");
 
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.25;
+backgroundMusic.preload = "auto";
 
-// Start music after the user's first interaction
+let musicStarted = false;
+
 function startBackgroundMusic() {
-  backgroundMusic.play().catch(() => {});
-  
-  document.removeEventListener("click", startBackgroundMusic);
-  document.removeEventListener("touchstart", startBackgroundMusic);
+
+  if (musicStarted) return;
+
+  backgroundMusic.play()
+    .then(() => {
+
+      musicStarted = true;
+
+      console.log("Background music started");
+
+      document.removeEventListener("click", startBackgroundMusic);
+      document.removeEventListener("touchstart", startBackgroundMusic);
+
+    })
+    .catch((error) => {
+
+      console.log("Background music waiting for another tap:", error);
+
+    });
 }
 
 document.addEventListener("click", startBackgroundMusic);
